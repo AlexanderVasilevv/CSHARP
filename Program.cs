@@ -1,13 +1,25 @@
 ﻿using System;
+using System.Linq;
 
-namespace mini_max_sum
+class Solution
 {
-    class Program
+
+    static void Main(String[] args)
     {
-        static void Main(string[] args)
+        var numbers = Console.ReadLine().Split(' ').Select(x => long.Parse(x)).ToList();
+        var sumOfAllNumbers = 0L;
+        var minimum = long.MaxValue;
+        var maximum = 0L;
+        for (int i = 0; i < 5; i++)
         {
-            Console.WriteLine("Hello World!");
+            sumOfAllNumbers += numbers[i];
+            if (numbers[i] < minimum)
+                minimum = numbers[i];
+
+            if (numbers[i] > maximum)
+                maximum = numbers[i];
+
         }
+        Console.WriteLine(string.Format("{0} {1}", sumOfAllNumbers - maximum, sumOfAllNumbers - minimum));
     }
 }
-
