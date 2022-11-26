@@ -1,25 +1,61 @@
-﻿using System;
+using System;
+using System.Drawing;
 using System.Linq;
 
-class Solution
+
+
+namespace TU_Varna
 {
-
-    static void Main(String[] args)
+    class Program
     {
-        var numbers = Console.ReadLine().Split(' ').Select(x => long.Parse(x)).ToList();
-        var sumOfAllNumbers = 0L;
-        var minimum = long.MaxValue;
-        var maximum = 0L;
-        for (int i = 0; i < 5; i++)
+        static void Main(string[] args)
         {
-            sumOfAllNumbers += numbers[i];
-            if (numbers[i] < minimum)
-                minimum = numbers[i];
+             int n = int.Parse(Console.ReadLine());
+            int m = 3;
+            var sum = 0;
+           byte count = 0;
+            int[,] arr = new int[n, m];
+            string[] lines = new string[n];
+            for (int i = 0; i < n; i++)
+            {
+                lines[i] = Console.ReadLine();
+            }
 
-            if (numbers[i] > maximum)
-                maximum = numbers[i];
 
+            for (int i = 0; i < n; i++)
+            {
+                string[] num = lines[i].Split(' ');
+                for (int j = 0; j < m; j++)
+                {
+                    int z = Convert.ToInt32(num[j]);
+                    arr[i, j] = z;
+                    
+                }
+            }
+            for (int i = 0; i < n; i++)
+            {
+
+                for (int j = 0; j < m; j++)
+                {
+                    if (arr[i, j] != n )
+                    {
+                        count++;
+                    }
+                        sum += arr[i, j];
+                    
+                }
+            }
+            if (sum > arr[0, 2])
+            {
+                Console.WriteLine(count);
+                Console.WriteLine(sum);
+                
+            }
+       
+            
+           
+            
         }
-        Console.WriteLine(string.Format("{0} {1}", sumOfAllNumbers - maximum, sumOfAllNumbers - minimum));
     }
 }
+
